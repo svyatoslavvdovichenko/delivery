@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import palette from "./palette";
 import { StyledButton } from "./StyledComponent";
 import Alert from "./Alert/Alert";
-import { useError } from "../hooks";
+import { useActions, useError, useUser } from "../hooks";
 
 const { Title } = Typography;
 
@@ -76,6 +76,8 @@ export const Layout: FC<LayoutPropsType> = ({
   shouldBeCentered = false,
 }) => {
   const { isOpenError } = useError();
+  const { isAuth, user} = useUser();
+  const { onLogOut } = useActions();
 
   return (
     <StyledLayout style={{ minHeight: "100vh" }}>
@@ -87,15 +89,15 @@ export const Layout: FC<LayoutPropsType> = ({
             </Title>
           </Link>
 
-          {true && (
+          {isAuth && (
             <StyledDropdown
               overlay={
                 <StyledMenu>
-                  <StyledItem key="1">Выйти</StyledItem>
+                  <StyledItem onClick={onLogOut} key="1">Выйти</StyledItem>
                 </StyledMenu>
               }
             >
-              <StyledButton icon={<UserOutlined />}>Святослав</StyledButton>
+              <StyledButton icon={<UserOutlined />}>{user?.firstName}</StyledButton>
             </StyledDropdown>
           )}
         </CenterRow>

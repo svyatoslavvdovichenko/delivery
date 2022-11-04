@@ -1,9 +1,11 @@
 import { useTypedSelector } from './useTypedSelector';
 import { useActions } from './useActions';
 import { useError } from './useError';
+import { useUser } from './useUser';
 
 export {
   useActions,
   useTypedSelector,
-  useError
+  useError,
+  useUser
 }

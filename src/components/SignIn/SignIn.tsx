@@ -5,6 +5,9 @@ import styled from "styled-components";
 import palette from "../palette";
 import { InputField } from "../StyledComponent/inputField";
 import { StyledButtonIn } from "../StyledComponent";
+import { useActions } from "../../hooks";
+import { IUser } from "../../types";
+import { signInValidate } from "../../helpers/signInValidate";
 
 const { Text } = Typography;
 
@@ -32,20 +35,33 @@ const StyledText = styled(Text)`
 `;
 
 const SignIn = () => {
+  const { onLogIn, setError } = useActions();
+
+  const onUserLogin = (values: IUser) => {
+    const error = signInValidate(values);
+    
+    if (error) {
+      setError(error);
+      return;
+    }    
+    
+    onLogIn(values);
+  }
+
   return (
     <Formik
       initialValues={{
-        username: "",
+        email: "",
         password: "",
       }}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={onUserLogin}
       validationSchema={SingInSchema}
     >
       {({ isValid }) => (
         <StyledForm>
           <StyledText>Авторизация</StyledText>
 
-          <InputField name="username" placeholder="Email" />
+          <InputField name="email" placeholder="Email" />
 
           <InputField
             name="password"

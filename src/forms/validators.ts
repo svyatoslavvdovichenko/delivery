@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 const REQUIRED_FIELD = Yup.string().required('Это обязательное поле')
 
 export const SingInSchema = Yup.object().shape({
-  username: Yup.string()
+  email: Yup.string()
     .required('Это обязательное поле')
     .email('Введите валидный email'),
   password: Yup.string()
@@ -15,9 +15,9 @@ export const SingInSchema = Yup.object().shape({
 })
 
 export const SingUpSchema = Yup.object().shape({
-  name: REQUIRED_FIELD,
-  secondName: REQUIRED_FIELD,
-  username: Yup.string().required('Это обязательное поле').email(),
+  firstName: REQUIRED_FIELD,
+  lastName: REQUIRED_FIELD,
+  email: Yup.string().required('Это обязательное поле').email(),
   password: Yup.string()
     .required('Это обязательное поле')
     .min(6, 'Слишком короткий пароль')

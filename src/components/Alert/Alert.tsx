@@ -1,4 +1,5 @@
 import { Alert as AntAlert } from "antd";
+import { useEffect } from "react";
 import styled from "styled-components";
 import { useActions, useError } from "../../hooks";
 
@@ -13,7 +14,13 @@ const StyledAlert = styled(AntAlert)`
 
 const Alert: React.FC = () => {
   const { message } = useError();
-  const { closeError } = useActions()
+  const { closeError } = useActions();
+
+  useEffect(() => {
+    setTimeout(() => {
+      closeError();
+    }, 3000);
+  }, [])
 
   return <StyledAlert 
     closable 

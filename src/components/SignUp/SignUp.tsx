@@ -6,6 +6,7 @@ import palette from "../palette";
 import { InputField } from "../StyledComponent/inputField";
 import { StyledButtonOut } from "../StyledComponent";
 import { useActions } from "../../hooks";
+import { signUpValidate } from "../../helpers/signUpValidate";
 
 const { Text } = Typography;
 
@@ -29,22 +30,30 @@ const StyledText = styled(Text)`
 `;
 
 const SignUp = () => {
-  const { setError } = useActions()
+  const { setError, onSignUp } = useActions()
 
-  const login = () => {
-    setError("Что-то не так");
+  const registration = (value: any) => {
+    const { password, email, firstName, lastName } = value; 
+    const error = signUpValidate({ password, email, firstName, lastName });    
+    
+    if (error) {
+      setError(error);
+      return;
+    }
+
+    onSignUp({ password, email, firstName, lastName });
   }
 
   return (
     <Formik
       initialValues={{
-        name: "",
-        secondName: "",
-        username: "",
         password: "",
+        email: "",
+        firstName: "",
+        lastName: "",
         doublePassword: "",
       }}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={registration}
       validationSchema={SingUpSchema}
     >
       {({ isValid }) => (
@@ -52,15 +61,15 @@ const SignUp = () => {
           <StyledText>Регистрация</StyledText>
           <Row>
             <Col span={12}>
-              <InputField name="name" type="right" placeholder="Иван" />
+              <InputField name="firstName" type="right" placeholder="Иван" />
             </Col>
 
             <Col span={12}>
-              <InputField name="secondName" type="left" placeholder="Иванов" />
+              <InputField name="lastName" type="left" placeholder="Иванов" />
             </Col>
           </Row>
 
-          <InputField name="username" placeholder="Email" />
+          <InputField name="email" placeholder="Email" />
 
           <InputField name="password" placeholder="Пароль" isPassword />
 
@@ -68,7 +77,7 @@ const SignUp = () => {
 
           <Row justify="space-between" align="middle"></Row>
 
-          <StyledButtonOut onClick={login} block htmlType="submit" disabled={!isValid}>
+          <StyledButtonOut block htmlType="submit" disabled={!isValid}>
             Зарегистрироваться
           </StyledButtonOut>
         </StyledForm>

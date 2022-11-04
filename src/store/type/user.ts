@@ -1,22 +1,30 @@
+import { IUser } from './../../types';
 export interface UserState {
-  message: string | null,
-  isOpenUser: boolean
+  user: IUser | null;
+  isAuth: boolean;
 }
 
 export enum UserActionTypes {
-  SET_USER
+  LOGIN_USER = "LOGIN_USER",
+  LOGOUT_USER = "LOGOUT_USER",
+  SIGNUP_USER = "SIGNUP_USER",
 }
 
-export interface openUserAction {
-  type: UserActionTypes;
-  payload: string;
+export interface logInUserAction {
+  type: UserActionTypes.LOGIN_USER;
+  payload: IUser;
 }
 
-export interface closeUserAction {
-  type: UserActionTypes;
+export interface logOutUserAction {
+  type: UserActionTypes.LOGOUT_USER;
 }
 
+export interface signUpUserAction {
+  type: UserActionTypes.SIGNUP_USER;
+  payload: IUser;
+}
 
 export type UserAction =
-  | closeUserAction
-  | openUserAction
+  | logInUserAction
+  | logOutUserAction
+  | signUpUserAction
