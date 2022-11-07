@@ -1,6 +1,7 @@
 import { InfoCircleOutlined } from "@ant-design/icons";
 import {
   Button,
+  Checkbox,
   Col,
   Collapse,
   Modal as AntdModal,
@@ -14,7 +15,6 @@ import styled from "styled-components";
 import { DeliveryMethod, TypeDelivery } from "../../constants";
 import { CreateDeliverySchema } from "../../forms/validators";
 import { useActions, useUser } from "../../hooks";
-import { IDelivery, rateEnum } from "../../types";
 import { SelectField } from "../SelectField/SelectField";
 import { StyledRow } from "../StyledComponent";
 import { InputField } from "../StyledComponent/inputField";
@@ -26,31 +26,51 @@ interface IModal {
   setIsOpenModal: (state: boolean) => void;
 }
 
-const { Text } = Typography;
-
 const { Panel } = Collapse;
 
 const StyledModal = styled(AntdModal)`
   border-radius: 15px;
 `;
 
+const StyledRowWrap = styled(Row)`
+  display: flex;
+  flex-direction: column;
+`
+
 const StyledCollapse = styled(Collapse)`
   margin-top: 15px;
 `;
 
 const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
+  const [privateHouse, setPrivateHouse] = useState({
+    toPrivateHouse: false,
+    fromPrivateHouse: false,
+  });
+
   const { createDelivery } = useActions();
   const { user } = useUser();
+
+  const setPrivateHouseFrom = () => {
+    setPrivateHouse({ ...privateHouse, fromPrivateHouse: !privateHouse.fromPrivateHouse  });
+  };
+
+  const setPrivateHouseTo = () => {
+    setPrivateHouse({ ...privateHouse, toPrivateHouse: !privateHouse.toPrivateHouse  });
+  };
 
   const createNewDelivery = (values: any) => {
     let price: number = Math.floor(Math.random() * (5000 - 500) + 500);
     price *= DeliveryMethod[values.deliveryMethod - 1].deliveryTax;
     price *= TypeDelivery[values.rate - 1].factor;
-    
-    createDelivery({ ...values, deliveryMethod: DeliveryMethod[values.deliveryMethod - 1].deliveryMethod, userId: user!.id!, price });
+
+    createDelivery({
+      ...values,
+      deliveryMethod: DeliveryMethod[values.deliveryMethod - 1].deliveryMethod,
+      userId: user!.id!,
+      price,
+    });
     setIsOpenModal(false);
-  }
-  ;
+  };
 
   return (
     <>
@@ -128,8 +148,20 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
                     name="street"
                     placeholder="Введите название улицы"
                   />
+
+                  <StyledRowWrap>
+                    <Row style={{ marginBottom: 10 }}>Частный дом</Row>
+
+                    <Row>
+                      <Checkbox
+                        onChange={setPrivateHouseTo}
+                      />
+                    </Row>
+                    
+                  </StyledRowWrap>
+    
                   <Row gutter={16}>
-                    <Col span={8}>
+                    <Col span={privateHouse.toPrivateHouse? 8 : 12}>
                       <InputField
                         suffix={
                           <Tooltip title="Введите номер дома">
@@ -141,22 +173,24 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
                       />
                     </Col>
 
-                    <Col span={8}>
-                      <InputField
-                        suffix={
-                          <Tooltip title="Введите строение">
-                            <InfoCircleOutlined />
-                          </Tooltip>
-                        }
-                        label="Корпус"
-                        name="housing"
-                      />
-                    </Col>
+                    {privateHouse.toPrivateHouse && 
+                      <Col span={8}>
+                        <InputField
+                          suffix={
+                            <Tooltip title="Введите строение">
+                              <InfoCircleOutlined />
+                            </Tooltip>
+                          }
+                          label="Корпус"
+                          name="housing"
+                        />
+                      </Col>
+                    }
 
-                    <Col span={8}>
+                    <Col span={privateHouse.toPrivateHouse? 8 : 12}>
                       <InputField
                         suffix={
-                          <Tooltip title="Введите индекс">
+                          <Tooltip title="Введите индекс состоящий из 6 цифр">
                             <InfoCircleOutlined />
                           </Tooltip>
                         }
@@ -185,8 +219,17 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
                     name="fromStreet"
                     placeholder="Введите название улицы"
                   />
+
+                  <StyledRowWrap>
+                    <Row style={{ marginBottom: 10 }}>Частный дом</Row>
+
+                    <Checkbox
+                      onChange={setPrivateHouseFrom}
+                    />
+                  </StyledRowWrap>
+
                   <Row gutter={16}>
-                    <Col span={8}>
+                    <Col span={!privateHouse.fromPrivateHouse? 8 : 12}>
                       <InputField
                         suffix={
                           <Tooltip title="Введите номер дома">
@@ -198,8 +241,9 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
                       />
                     </Col>
 
-                    <Col span={8}>
-                      <InputField
+                    {!privateHouse.fromPrivateHouse && 
+                      <Col span={8}>
+                        <InputField
                         suffix={
                           <Tooltip title="Введите строение">
                             <InfoCircleOutlined />
@@ -208,12 +252,13 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
                         label="Корпус"
                         name="fromHousing"
                       />
-                    </Col>
+                      </Col>
+                    }
 
-                    <Col span={8}>
+                    <Col span={!privateHouse.fromPrivateHouse? 8 : 12}>
                       <InputField
                         suffix={
-                          <Tooltip title="Введите индекс">
+                          <Tooltip title="Введите индекс состоящий из 6 цифр">
                             <InfoCircleOutlined />
                           </Tooltip>
                         }
@@ -226,7 +271,11 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
               </StyledCollapse>
 
               <StyledRow justify="space-between">
-              <Button type="ghost" htmlType="button" onClick={() => setIsOpenModal(false)}>
+                <Button
+                  type="ghost"
+                  htmlType="button"
+                  onClick={() => setIsOpenModal(false)}
+                >
                   Отменить
                 </Button>
 

@@ -33,7 +33,7 @@ const Table: React.FC = () => {
             },
 
           ]}
-          onFilter={(value, item: IDelivery) => item.deliveryMethod.includes(value)}
+          onFilter={(value: string, item: IDelivery) => item.deliveryMethod.includes(value)}
         />
         <AntdTable.Column
           title="Цена"
