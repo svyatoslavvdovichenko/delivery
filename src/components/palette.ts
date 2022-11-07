@@ -4,7 +4,7 @@ const palette = {
   darkBlue: "#262840",
   sand: "#A68A56",
   light: "#F2F2F2",
-  maitTheme: "#404369",
+  mainTheme: "#676699",
   alpha: "#fff0",
 }
 

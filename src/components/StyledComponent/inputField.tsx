@@ -15,6 +15,7 @@ interface IInputProps {
   isPassword?: boolean;
   label?: ReactNode;
   type?: string;
+  suffix?: ReactNode;
 }
 
 export const InputField: FC<IInputProps> = ({
@@ -22,7 +23,8 @@ export const InputField: FC<IInputProps> = ({
   placeholder,
   isPassword,
   label,
-  type
+  type,
+  suffix
 }) => (
   <StyledContainer>
     <Field name={name}>
@@ -54,6 +56,7 @@ export const InputField: FC<IInputProps> = ({
               $validationError={error}
               status={error ? "error" : ""}
               $isTouched={touched}
+              suffix={suffix}
               {...field}
             />
           )}

@@ -1,4 +1,4 @@
-import { Button, Input } from "antd";
+import { Button, Input, Row } from "antd";
 import { ErrorMessage } from "formik";
 import palette from "../palette";
 import styled, { css } from "styled-components";
@@ -10,7 +10,6 @@ interface IInputProps {
 }
 
 export const StyledButton = styled(Button)`
-  background-color: ${palette.light};
   border: 0;
 
   &:hover {
@@ -30,6 +29,10 @@ export const StyledErrorMassege = styled(ErrorMessage)`
   position: absolute;
   color: red;
 `;
+
+export const StyledRow = styled(Row)`
+  margin-top: 15px;
+`
 
 export const StyledInput = styled(Input)<IInputProps>`
   border-radius: 20px;

@@ -15,22 +15,38 @@ export enum DeliveryMethodEmum {
 export type delivery = DeliveryMethodEmum;
 
 export interface IDelivery {
-  userId: number,
-  id: number,
+  userId?: number,
+  id?: number,
   title: string;
-  deliveryMethod: deliveryMethodTax;
-  toAdress: IAdress;
-  fromAdress: IAdress;
-  rate: number;
-  price: number;
+  deliveryMethod: string;
+  country: string;
+  city: string;
+  street: string;
+  house: number;
+  housing: string;
+  index: number;
+  fromCountry: string,
+  fromCity: string,
+  fromStreet: string,
+  fromHouse: number,
+  fromHousing: string,
+  fromIndex: number,
+  rate: ITypeDelivery;
+  price?: number;
 }
 
-export enum rateEmum {
+export interface ITypeDelivery {
+  id: number,
+  title: rate,
+  factor: number
+}
+
+export enum rateEnum {
   DEFAULT = "DEFAULT",
   PREMIUM = "PREMIUM",
 }
 
-export type rate = rateEmum;
+export type rate = rateEnum;
 
 export interface deliveryMethodTax {
   id: number;
@@ -40,11 +56,3 @@ export interface deliveryMethodTax {
   link: string;
 }
 
-export interface IAdress {
-  country: string;
-  city: string;
-  street: string;
-  house: number;
-  housing: string;
-  index: number;
-}

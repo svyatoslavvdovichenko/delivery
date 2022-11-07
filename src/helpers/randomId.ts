@@ -1,10 +1,9 @@
-import { IUser } from "../types";
 
-export const createRandomValue = (users: IUser[]): number => {
+export const createRandomValue = (array: any): number => {
   let randomId: number = Math.floor(Math.random() * 10000);
-  users.forEach((user) => {
-    if (randomId === user.id) {
-      createRandomValue(users);
+  array.forEach((el: { id: number; }) => {
+    if (randomId === el.id) {
+      createRandomValue(array);
       return;
     }
   })

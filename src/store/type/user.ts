@@ -8,10 +8,16 @@ export enum UserActionTypes {
   LOGIN_USER = "LOGIN_USER",
   LOGOUT_USER = "LOGOUT_USER",
   SIGNUP_USER = "SIGNUP_USER",
+  SET_USER = "SET_USER"
 }
 
 export interface logInUserAction {
   type: UserActionTypes.LOGIN_USER;
+  payload: IUser;
+}
+
+export interface setUserAction {
+  type: UserActionTypes.SET_USER;
   payload: IUser;
 }
 
@@ -28,3 +34,4 @@ export type UserAction =
   | logInUserAction
   | logOutUserAction
   | signUpUserAction
+  | setUserAction

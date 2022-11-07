@@ -1,11 +1,15 @@
 import { FC } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { useUser } from "./hooks";
 import { Authorization } from "./pages/Authorization/Authorization";
+import DeliveryMain from "./DeliveryMain";
 
 const App: FC = () => {
-  
+  const { isAuth } = useUser();
 
-
+  if (isAuth) {
+    return <DeliveryMain />
+  }
 
   return (
     <Routes>

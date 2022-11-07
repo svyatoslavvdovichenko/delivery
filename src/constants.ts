@@ -1,4 +1,4 @@
-import { DeliveryMethodEmum, deliveryMethodTax, rateEmum } from "./types"
+import { DeliveryMethodEmum, deliveryMethodTax, rateEnum } from "./types"
 
 const DeliveryMethod: deliveryMethodTax[] = [
   {
@@ -16,7 +16,7 @@ const DeliveryMethod: deliveryMethodTax[] = [
     deliveryTax: 1
   },
   {
-    id: 1,
+    id: 3,
     title: "СДЭК",
     link: "https://www.cdek.ru/ru",
     deliveryMethod: DeliveryMethodEmum.SDEK,
@@ -27,12 +27,12 @@ const DeliveryMethod: deliveryMethodTax[] = [
 const TypeDelivery = [
   {
     id: 1,
-    rateType: rateEmum.DEFAULT,
+    title: rateEnum.DEFAULT,
     factor: 1,
   },
   {
     id: 2,
-    rateType: rateEmum.PREMIUM,
+    title: rateEnum.PREMIUM,
     factor: 1.5,
   }
 ]

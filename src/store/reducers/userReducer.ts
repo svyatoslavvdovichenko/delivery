@@ -33,6 +33,9 @@ export const userReducer = (
       localStorage.setItem("user", JSON.stringify(user));
       return { ...state, isAuth: true, user: user };
     }
+    case UserActionTypes.SET_USER: {
+      return { ...state, isAuth: true, user: action.payload }
+    }
     default:
       return state;
   }

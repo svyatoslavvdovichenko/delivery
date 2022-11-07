@@ -40,11 +40,9 @@ const StyledDropdown = styled(Dropdown)`
 
 const StyledItem = styled(Item)`
   border-radius: 10px;
-  background-color: ${palette.light};
 `;
 const StyledMenu = styled(Menu)`
   border-radius: 10px;
-  background-color: ${palette.light};
 `;
 
 const StyledHeader = styled(Header)`
@@ -56,13 +54,13 @@ const StyledFooter = styled(Footer)`
   color: ${palette.light};
 `;
 
-export type LayoutPropsType = {
+export type ILayout = {
   shouldBeCentered?: boolean;
   children: React.ReactNode;
 };
 
 const StyledLayout = styled(AntdLayout)`
-  background-color: ${palette.light};
+  background-color: ${palette.mainTheme};
 `;
 
 const CenterRow = styled(Row)`
@@ -71,7 +69,7 @@ const CenterRow = styled(Row)`
   align-items: center;
 `;
 
-export const Layout: FC<LayoutPropsType> = ({
+export const Layout: FC<ILayout> = ({
   children,
   shouldBeCentered = false,
 }) => {
