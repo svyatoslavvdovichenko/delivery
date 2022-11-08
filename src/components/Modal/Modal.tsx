@@ -20,6 +20,7 @@ import {
 import { CreateDeliverySchema } from "../../forms/validators";
 import { useActions, useUser } from "../../hooks";
 import { IDelivery } from "../../types";
+import DisplayPrice from "../DisplayPrice/DisplayPrice";
 import { SelectField } from "../SelectField/SelectField";
 import { StyledRow } from "../StyledComponent";
 import { InputField } from "../StyledComponent/inputField";
@@ -97,7 +98,7 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
         onSubmit={createNewDelivery}
         validationSchema={CreateDeliverySchema}
       >
-        {({ isValid }) => (
+        {({ isValid, dirty, values }) => (
           <Form>
             <InputField
               label="Имя доставки"
@@ -261,6 +262,10 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
               </Panel>
             </StyledCollapse>
 
+            <StyledRow>
+              <DisplayPrice values={values}/>
+            </StyledRow>
+
             <StyledRow justify="space-between">
               <Button
                 type="ghost"
@@ -274,7 +279,7 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
                 Очистить
               </Button>
 
-              <Button disabled={!isValid} type="primary" htmlType="submit">
+              <Button disabled={!isValid && !dirty} type="primary" htmlType="submit">
                 Создать
               </Button>
             </StyledRow>

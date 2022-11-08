@@ -23,6 +23,10 @@ const StyledForm = styled(Form)`
   }
 `;
 
+const StyledInputField = styled(InputField)`
+  margin-top: 15px;
+`
+
 const StyledText = styled(Text)`
   color: ${palette.light};
   font-size: 25px;
@@ -61,19 +65,19 @@ const SignUp = () => {
           <StyledText>Регистрация</StyledText>
           <Row>
             <Col span={12}>
-              <InputField name="firstName" type="right" placeholder="Иван" />
+              <StyledInputField name="firstName" type="right" placeholder="Иван" />
             </Col>
 
             <Col span={12}>
-              <InputField name="lastName" type="left" placeholder="Иванов" />
+              <StyledInputField name="lastName" type="left" placeholder="Иванов" />
             </Col>
           </Row>
 
-          <InputField name="email" placeholder="Email" />
+          <StyledInputField name="email" placeholder="Email" />
 
-          <InputField name="password" placeholder="Пароль" isPassword />
+          <StyledInputField name="password" placeholder="Пароль" isPassword />
 
-          <InputField
+          <StyledInputField
             name="doublePassword"
             placeholder="Повторите пароль"
             isPassword
@@ -81,7 +85,7 @@ const SignUp = () => {
 
           <Row justify="space-between" align="middle"></Row>
 
-          <StyledButtonOut block htmlType="submit" disabled={!isValid}>
+          <StyledButtonOut block htmlType="submit">
             Зарегистрироваться
           </StyledButtonOut>
         </StyledForm>

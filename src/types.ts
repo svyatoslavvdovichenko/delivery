@@ -22,17 +22,17 @@ export interface IDelivery {
   country: string;
   city: string;
   street: string;
-  house: number;
+  house: string;
   housing: string;
-  index: number;
+  index: string;
   isHouse?: boolean;
   fromCountry: string;
   fromCity: string;
   fromStreet: string;
-  fromHouse: number;
+  fromHouse: string;
   fromIsHouse?: boolean;
   fromHousing: string;
-  fromIndex: number;
+  fromIndex: string;
   rate: string;
   price?: number;
 }

@@ -17,8 +17,13 @@ const StyledHeader = styled(PageHeader)`
 const StyledCard = styled(Card)`
   width: 100%;
   margin-top: 15px;
-  background-color: ${palette.dark};
+  cursor: default;
+  background-color: ${palette.darkBlue};
 `;
+
+const HeaderText = styled(Text)`
+  cursor: pointer;
+`
 
 const StyledTitle = styled(Title)`
   text-align: center;
@@ -43,7 +48,7 @@ const DeliveryDetail: FC = () => {
     <>
       <StyledHeader
         onBack={() => navigate("/list")}
-        title={`Доставка № ${delivery?.id!}`}
+        title={<HeaderText onClick={() => navigate("/list")}>{`Доставка № ${delivery?.id!}`}</HeaderText>}
       />
       <Row>
         <StyledCard

@@ -17,11 +17,15 @@ const StyledForm = styled(Form)`
   padding-bottom: 50px;
   border-radius: 10px;
   min-height: 30vh;
-  min-width: 50vw;
+  width: 50vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
+  @media (min-width: 1024px) {
+    width: 500px;
+  }
 
   @media (max-width: 750px) {
     min-width: 90vw;
@@ -67,7 +71,7 @@ const SignIn = () => {
 
           <Row justify="space-between" align="middle"></Row>
 
-          <StyledButtonIn block htmlType="submit" disabled={!isValid}>
+          <StyledButtonIn block htmlType="submit">
             Вход
           </StyledButtonIn>
         </StyledForm>

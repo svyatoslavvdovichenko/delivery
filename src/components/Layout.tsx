@@ -60,7 +60,7 @@ export type ILayout = {
 };
 
 const StyledLayout = styled(AntdLayout)`
-  background-color: ${palette.mainTheme};
+  background-color: ${palette.dark};
 `;
 
 const CenterRow = styled(Row)`

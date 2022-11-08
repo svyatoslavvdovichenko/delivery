@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import Table from "../../components/Table/Table";
 import Modal from "../../components/Modal/Modal";
 import { Button } from "antd";
+import styled from "styled-components";
 
 const DeliveryList: FC = () => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
@@ -11,10 +12,7 @@ const DeliveryList: FC = () => {
       {isOpenModal && (
         <Modal setIsOpenModal={setIsOpenModal} isOpenModal={isOpenModal} />
       )}
-      <Table />
-      <Button type="primary" onClick={() => setIsOpenModal(true)}>
-        Добавить доставку
-      </Button>
+      <Table setIsOpenModal={setIsOpenModal}/>
     </>
   );
 };

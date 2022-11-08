@@ -37,7 +37,6 @@ export const InputField: FC<IInputProps> = ({
               placeholder={placeholder}
               $validationError={error}
               $isTouched={touched}
-              style={{ marginBottom: "20px" }}
               status={error ? "error" : ""}
               {...field}
               iconRender={(visible) =>
@@ -50,7 +49,6 @@ export const InputField: FC<IInputProps> = ({
             />
           ) : (
             <StyledInput
-              style={{ marginBottom: "20px" }}
               placeholder={placeholder}
               border={type}
               $validationError={error}

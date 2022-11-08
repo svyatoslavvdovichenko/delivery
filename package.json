@@ -35,7 +35,9 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "craco eject"
+    "eject": "craco eject",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -55,8 +57,9 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "http://localhost:3000/authorization",
+  "homepage": "https://svyatoslavvdovichenko.github.io/delivery/",
   "devDependencies": {
+    "gh-pages": "^4.0.0",
     "less": "^4.1.3",
     "less-loader": "^11.1.0"
   }

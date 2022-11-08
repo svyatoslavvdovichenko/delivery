@@ -2,7 +2,7 @@ import { Row, Select, SelectProps } from "antd";
 import { Field, FieldProps } from "formik";
 import { FC, ReactNode } from "react";
 import { createGlobalStyle } from "styled-components";
-import { StyledErrorMassege } from "../StyledComponent";
+import { StyledContainer, StyledErrorMassege } from "../StyledComponent";
 
 const { Option } = Select;
 
@@ -31,7 +31,7 @@ export const SelectField: FC<SelectFieldProps> = ({
   ...selectProps
 }) => {
   return (
-    <>
+    <StyledContainer>
       <Field name={name} {...shouldUpdate}>
         {({
           meta: { initialValue, value, error, touched },
@@ -60,6 +60,6 @@ export const SelectField: FC<SelectFieldProps> = ({
         )}
       </Field>
       <StyledErrorMassege name={name} component="div" />
-    </>
+    </StyledContainer>
   );
 };
