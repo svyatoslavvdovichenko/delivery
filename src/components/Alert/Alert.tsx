@@ -20,14 +20,16 @@ const Alert: React.FC = () => {
     setTimeout(() => {
       closeError();
     }, 3000);
-  }, [])
+  }, []);
 
-  return <StyledAlert 
-    closable 
-    afterClose={closeError}
-    showIcon  
-    message={message}
-    type="error" 
-  />;
+  return (
+    <StyledAlert
+      closable
+      afterClose={closeError}
+      showIcon
+      message={message}
+      type="error"
+    />
+  );
 };
 export default Alert;

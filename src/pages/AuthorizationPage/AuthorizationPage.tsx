@@ -11,14 +11,14 @@ const { Title, Text } = Typography;
 
 const StyledTabPane = styled(TabPane)`
   border: 1px solid black;
-`
+`;
 
 export enum TabKeys {
   SignIn = "sign-in",
   SignUp = "sign-up",
 }
 
-export const Authorization = () => {
+export const AuthorizationPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -51,8 +51,6 @@ export const Authorization = () => {
               <SignUp />
             </StyledTabPane>
           </Tabs>
-
-          
         </Col>
       </Row>
     </Layout>

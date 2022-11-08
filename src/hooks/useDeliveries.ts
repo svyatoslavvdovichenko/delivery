@@ -1,7 +1,7 @@
-import { useTypedSelector } from './useTypedSelector';
+import { useTypedSelector } from "./useTypedSelector";
 
 export const useDeliveries = () => {
-  const { deliveries } = useTypedSelector(state => state.deliveriesReducer);
+  const { deliveries } = useTypedSelector((state) => state.deliveriesReducer);
 
   return { deliveries };
-} 
+};

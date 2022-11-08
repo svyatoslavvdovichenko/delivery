@@ -30,19 +30,19 @@ const StyledText = styled(Text)`
 `;
 
 const SignUp = () => {
-  const { setError, onSignUp } = useActions()
+  const { setError, onSignUp } = useActions();
 
   const registration = (value: any) => {
-    const { password, email, firstName, lastName } = value; 
-    const error = signUpValidate({ password, email, firstName, lastName });    
-    
+    const { password, email, firstName, lastName } = value;
+    const error = signUpValidate({ password, email, firstName, lastName });
+
     if (error) {
       setError(error);
       return;
     }
 
     onSignUp({ password, email, firstName, lastName });
-  }
+  };
 
   return (
     <Formik
@@ -73,7 +73,11 @@ const SignUp = () => {
 
           <InputField name="password" placeholder="Пароль" isPassword />
 
-          <InputField name="doublePassword" placeholder="Повторите пароль" isPassword />
+          <InputField
+            name="doublePassword"
+            placeholder="Повторите пароль"
+            isPassword
+          />
 
           <Row justify="space-between" align="middle"></Row>
 

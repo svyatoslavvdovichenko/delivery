@@ -1,7 +1,7 @@
-import { IDelivery } from './../../types';
+import { IDelivery } from "./../../types";
 
 export interface DeliveryState {
-  deliveries: IDelivery[]
+  deliveries: IDelivery[];
 }
 
 export enum DeliveryActionTypes {
@@ -19,4 +19,4 @@ export interface createDeliveriesAction {
   payload: IDelivery;
 }
 
-export type DeliveryAction = getDeliveriesAction | createDeliveriesAction
+export type DeliveryAction = getDeliveriesAction | createDeliveriesAction;

@@ -5,7 +5,7 @@ import App from "./App";
 import { store } from "./store";
 import CheckAuth from "./hocs/CheckAuth";
 
-import 'antd/dist/antd.dark.less';
+import "antd/dist/antd.dark.less";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

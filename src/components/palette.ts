@@ -6,6 +6,7 @@ const palette = {
   light: "#F2F2F2",
   mainTheme: "#676699",
   alpha: "#fff0",
-}
+  dark: "#1b1d2e",
+};
 
 export default palette;

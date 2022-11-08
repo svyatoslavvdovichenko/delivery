@@ -8,17 +8,13 @@ interface ICheckAuth {
 const CheckAuth: FC<ICheckAuth> = ({ children }) => {
   const { setUser } = useActions();
 
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user")!);
+  const user = JSON.parse(localStorage.getItem("user")!);
 
-    if (user) {
-      setUser(user);
-    }
-  }, []);
-  
-  return (
-    <>{children}</>
-  )
-}
+  if (user) {
+    setUser(user);
+  }
+
+  return <>{children}</>;
+};
 
 export default CheckAuth;

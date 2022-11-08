@@ -5,10 +5,12 @@ import { Button } from "antd";
 
 const DeliveryList: FC = () => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
-  
+
   return (
     <>
-      {isOpenModal && <Modal setIsOpenModal={setIsOpenModal} isOpenModal={isOpenModal}/>}
+      {isOpenModal && (
+        <Modal setIsOpenModal={setIsOpenModal} isOpenModal={isOpenModal} />
+      )}
       <Table />
       <Button type="primary" onClick={() => setIsOpenModal(true)}>
         Добавить доставку

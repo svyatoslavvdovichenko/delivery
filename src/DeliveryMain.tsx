@@ -5,20 +5,18 @@ import GetDeliveries from "./hocs/GetDeliveries";
 import DeliveryDetail from "./pages/DeliveryDetail/DeliveryDetail";
 import DeliveryList from "./pages/DeliveryList/DeliveryList";
 
-const DeliveryMain: FC = () => {
-  return (
-    <GetDeliveries>
-      <Layout>
-        <Routes>
-          <Route path="/list" element={<DeliveryList />} />
+const DeliveryMain: FC = () => (
+  <GetDeliveries>
+    <Layout>
+      <Routes>
+        <Route path="*" element={<Navigate to="/list" replace />} />
 
-          <Route path="/detail/:id" element={<DeliveryDetail />} />
+        <Route path="/list" element={<DeliveryList />} />
 
-          <Route path="*" element={<Navigate to="/list" replace />} />
-        </Routes>
-      </Layout>
-    </GetDeliveries>
-  );
-};
+        <Route path="/detail/:id" element={<DeliveryDetail />} />
+      </Routes>
+    </Layout>
+  </GetDeliveries>
+);
 
 export default DeliveryMain;

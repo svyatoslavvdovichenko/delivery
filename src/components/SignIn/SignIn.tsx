@@ -39,14 +39,14 @@ const SignIn = () => {
 
   const onUserLogin = (values: IUser) => {
     const error = signInValidate(values);
-    
+
     if (error) {
       setError(error);
       return;
-    }    
-    
+    }
+
     onLogIn(values);
-  }
+  };
 
   return (
     <Formik
@@ -63,11 +63,7 @@ const SignIn = () => {
 
           <InputField name="email" placeholder="Email" />
 
-          <InputField
-            name="password"
-            placeholder="Пароль"
-            isPassword
-          />
+          <InputField name="password" placeholder="Пароль" isPassword />
 
           <Row justify="space-between" align="middle"></Row>
 

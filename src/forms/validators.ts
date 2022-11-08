@@ -10,8 +10,7 @@ export const SingInSchema = Yup.object().shape({
     .required("Это обязательное поле")
     .min(6, "Слишком короткий пароль")
     .matches(/(?=.*[0-9])/, "Пароль должен содержать цифры")
-    .matches(/(?=.*[A-Z])/, "Пароль должен содержать заглавные буквы")
-    .matches(/^[A-Za-z0-9]+$/, "Password must not contain special characters"),
+    .matches(/(?=.*[A-Z])/, "Пароль должен содержать заглавные буквы"),
 });
 
 export const SingUpSchema = Yup.object().shape({
@@ -22,8 +21,7 @@ export const SingUpSchema = Yup.object().shape({
     .required("Это обязательное поле")
     .min(6, "Слишком короткий пароль")
     .matches(/(?=.*[0-9])/, "Пароль должен содержать цифры")
-    .matches(/(?=.*[A-Z])/, "Пароль должен содержать заглавные буквы")
-    .matches(/^[A-Za-z0-9]+$/, "Password must not contain special characters"),
+    .matches(/(?=.*[A-Z])/, "Пароль должен содержать заглавные буквы"),
   doublePassword: Yup.string()
     .required("Это обязательное поле")
     .oneOf([Yup.ref("password"), null], "Пароли должны совпадать"),
@@ -44,8 +42,6 @@ export const CreateDeliverySchema = Yup.object().shape({
   house: Yup.number()
     .required("Это обязательное поле")
     .min(1, "Номер дома не может быть меньше 1"),
-  housing: Yup.string()
-    .max(1, "Введите букву дома"),
   index: Yup.string()
     .required("Это обязательное поле")
     .matches(/^[0-9]+$/, "Введите корректный индекс")
@@ -63,8 +59,6 @@ export const CreateDeliverySchema = Yup.object().shape({
   fromHouse: Yup.number()
     .required("Это обязательное поле")
     .min(1, "Номер дома не может быть меньше 1"),
-  fromHousing: Yup.string()
-    .max(1, "Введите букву дома"),
   fromIndex: Yup.string()
     .required("Это обязательное поле")
     .matches(/^[0-9]+$/, "Введите корректный индекс")

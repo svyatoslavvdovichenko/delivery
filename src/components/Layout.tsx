@@ -69,12 +69,9 @@ const CenterRow = styled(Row)`
   align-items: center;
 `;
 
-export const Layout: FC<ILayout> = ({
-  children,
-  shouldBeCentered = false,
-}) => {
+export const Layout: FC<ILayout> = ({ children, shouldBeCentered = false }) => {
   const { isOpenError } = useError();
-  const { isAuth, user} = useUser();
+  const { isAuth, user } = useUser();
   const { onLogOut } = useActions();
 
   return (
@@ -91,11 +88,15 @@ export const Layout: FC<ILayout> = ({
             <StyledDropdown
               overlay={
                 <StyledMenu>
-                  <StyledItem onClick={onLogOut} key="1">Выйти</StyledItem>
+                  <StyledItem onClick={onLogOut} key="1">
+                    Выйти
+                  </StyledItem>
                 </StyledMenu>
               }
             >
-              <StyledButton icon={<UserOutlined />}>{user?.firstName}</StyledButton>
+              <StyledButton icon={<UserOutlined />}>
+                {user?.firstName}
+              </StyledButton>
             </StyledDropdown>
           )}
         </CenterRow>
@@ -104,9 +105,9 @@ export const Layout: FC<ILayout> = ({
       <StyledContent $shouldBeCentered={shouldBeCentered}>
         {children}
       </StyledContent>
-      
+
       {isOpenError && <Alert />}
-      
+
       <StyledFooter>Delivery Very</StyledFooter>
     </StyledLayout>
   );

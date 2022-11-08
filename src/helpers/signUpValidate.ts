@@ -5,7 +5,7 @@ export const signUpValidate = (user: IUser) => {
   if (!users) {
     return null;
   }
-  
+
   const isUser = users.find((el) => el.email === user.email);
 
   if (isUser) {

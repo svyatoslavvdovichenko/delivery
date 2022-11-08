@@ -1,4 +1,4 @@
-import { IUser } from './../../types';
+import { IUser } from "./../../types";
 export interface UserState {
   user: IUser | null;
   isAuth: boolean;
@@ -8,7 +8,7 @@ export enum UserActionTypes {
   LOGIN_USER = "LOGIN_USER",
   LOGOUT_USER = "LOGOUT_USER",
   SIGNUP_USER = "SIGNUP_USER",
-  SET_USER = "SET_USER"
+  SET_USER = "SET_USER",
 }
 
 export interface logInUserAction {
@@ -34,4 +34,4 @@ export type UserAction =
   | logInUserAction
   | logOutUserAction
   | signUpUserAction
-  | setUserAction
+  | setUserAction;

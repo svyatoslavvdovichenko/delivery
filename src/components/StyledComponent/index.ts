@@ -32,7 +32,7 @@ export const StyledErrorMassege = styled(ErrorMessage)`
 
 export const StyledRow = styled(Row)`
   margin-top: 15px;
-`
+`;
 
 export const StyledInput = styled(Input)<IInputProps>`
   border-radius: 20px;

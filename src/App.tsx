@@ -1,23 +1,16 @@
 import { FC } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
-import { useUser } from "./hooks";
-import { Authorization } from "./pages/Authorization/Authorization";
+import { useTypedSelector, useUser } from "./hooks";
 import DeliveryMain from "./DeliveryMain";
+import Authorization from "./Authorization";
 
 const App: FC = () => {
-  const { isAuth } = useUser();
+  const { isAuth } = useTypedSelector((state) => state.userReducer);
 
   if (isAuth) {
-    return <DeliveryMain />
+    return <DeliveryMain />;
   }
 
-  return (
-    <Routes>
-      <Route path="/authorization" element={<Authorization/>} />
-      
-      <Route path="*" element={<Navigate to="/authorization" replace />} />
-    </Routes>
-  );
-}
+  return <Authorization />;
+};
 
 export default App;

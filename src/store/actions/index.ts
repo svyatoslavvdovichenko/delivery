@@ -1,6 +1,6 @@
-import { createDelivery, getDeliveries } from './deliveryActions';
-import { setError, closeError } from './errorActions';
-import { onLogIn, onLogOut, onSignUp, setUser } from './userActions';
+import { createDelivery, getDeliveries } from "./deliveryActions";
+import { setError, closeError } from "./errorActions";
+import { onLogIn, onLogOut, onSignUp, setUser } from "./userActions";
 
 export default {
   setError,
@@ -11,4 +11,4 @@ export default {
   setUser,
   getDeliveries,
   createDelivery,
-}
+};

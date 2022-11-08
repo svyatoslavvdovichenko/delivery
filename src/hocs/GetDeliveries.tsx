@@ -8,14 +8,12 @@ interface IGetDeliveries {
 const GetDeliveries: FC<IGetDeliveries> = ({ children }) => {
   const { user } = useUser();
   const { getDeliveries } = useActions();
-  
+
   useEffect(() => {
     getDeliveries(user!.id!);
-  }, [])
+  }, []);
 
-  return (
-    <>{children}</>
-  )
-} 
+  return <>{children}</>;
+};
 
 export default GetDeliveries;
