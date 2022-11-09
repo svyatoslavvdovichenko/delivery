@@ -60,6 +60,7 @@ const columns: ColumnsType<IDelivery> | undefined = [
     ],
     //Пример из документации работает с string, но как я не пробывал работает только с any
     onFilter: (value: any, item) => item.deliveryMethod.includes(value),
+    responsive: ["sm"]
   },
   {
     title: "Цена",
