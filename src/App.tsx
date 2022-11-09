@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useTypedSelector, useUser } from "./hooks";
+import { useTypedSelector } from "./hooks";
 import DeliveryMain from "./DeliveryMain";
 import Authorization from "./Authorization";
 

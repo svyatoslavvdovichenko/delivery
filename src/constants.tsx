@@ -1,33 +1,33 @@
 import {
-  DeliveryMethodEmum,
-  deliveryMethodTax,
+  EDeliveryMethod,
+  IDeliveryMethodTax,
   IDelivery,
-  rateEnum,
+  ERate,
 } from "./types";
 import { Typography } from "antd";
 import { ColumnsType } from "antd/lib/table";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-const DeliveryMethod: deliveryMethodTax[] = [
+const DeliveryMethod: IDeliveryMethodTax[] = [
   {
     id: 1,
     title: "DHL",
     link: "https://www.logistics.dhl.ru/ru-ru/home.html",
-    deliveryMethod: DeliveryMethodEmum.DHL,
+    deliveryMethod: EDeliveryMethod.DHL,
     deliveryTax: 2,
   },
   {
     id: 2,
     title: "Почта России",
     link: "https://www.pochta.ru/",
-    deliveryMethod: DeliveryMethodEmum.POST_OF_RUSSIA,
+    deliveryMethod: EDeliveryMethod.POST_OF_RUSSIA,
     deliveryTax: 1,
   },
   {
     id: 3,
     title: "СДЭК",
     link: "https://www.cdek.ru/ru",
-    deliveryMethod: DeliveryMethodEmum.SDEK,
+    deliveryMethod: EDeliveryMethod.SDEK,
     deliveryTax: 1.5,
   },
 ];
@@ -80,12 +80,12 @@ const columns: ColumnsType<IDelivery> | undefined = [
 const TypeDelivery = [
   {
     id: 1,
-    title: rateEnum.DEFAULT,
+    title: ERate.DEFAULT,
     factor: 1,
   },
   {
     id: 2,
-    title: rateEnum.PREMIUM,
+    title: ERate.PREMIUM,
     factor: 1.5,
   },
 ];

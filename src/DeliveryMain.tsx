@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Layout } from "./components/Layout";
+import { Layout } from "./components/Layout/Layout";
 import GetDeliveries from "./hocs/GetDeliveries";
 import DeliveryDetail from "./pages/DeliveryDetail/DeliveryDetail";
 import DeliveryList from "./pages/DeliveryList/DeliveryList";

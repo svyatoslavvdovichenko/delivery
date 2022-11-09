@@ -1,17 +1,13 @@
 import { Col, Row, Tabs, Typography } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import Alert from "../../components/Alert/Alert";
-import { Layout } from "../../components/Layout";
+import { Layout } from "../../components/Layout/Layout";
 import SignIn from "../../components/SignIn/SignIn";
 import SignUp from "../../components/SignUp/SignUp";
+import { StyledTabPane } from "./styled";
 
-const { TabPane } = Tabs;
-const { Title, Text } = Typography;
 
-const StyledTabPane = styled(TabPane)`
-  border: 1px solid black;
-`;
+const { Title } = Typography;
+
 
 export enum TabKeys {
   SignIn = "sign-in",

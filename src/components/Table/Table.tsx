@@ -13,15 +13,19 @@ interface ITable {
 const Table: React.FC<ITable> = ({ setIsOpenModal }) => {
   const { deliveries } = useDeliveries();
 
+  const isVisiblePagination = deliveries.length < 10;
+
   return (
     <>
       <Title>Мои доставки</Title>
+
       <AntdTable
         footer={() => (
           <StyledButton type="primary" onClick={() => setIsOpenModal(true)}>
             Добавить доставку
           </StyledButton>
         )}
+        pagination={{ hideOnSinglePage: isVisiblePagination }}
         columns={columns}
         dataSource={deliveries}
       />

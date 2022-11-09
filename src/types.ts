@@ -6,13 +6,11 @@ export interface IUser {
   lastName?: string;
 }
 
-export enum DeliveryMethodEmum {
+export enum EDeliveryMethod {
   SDEK = "СДЕК",
   POST_OF_RUSSIA = "Почта россии",
   DHL = "DHL",
 }
-
-export type delivery = DeliveryMethodEmum;
 
 export interface IDelivery {
   userId?: number;
@@ -37,17 +35,15 @@ export interface IDelivery {
   price?: number;
 }
 
-export enum rateEnum {
+export enum ERate {
   DEFAULT = "DEFAULT",
   PREMIUM = "PREMIUM",
 }
 
-export type rate = rateEnum;
-
-export interface deliveryMethodTax {
+export interface IDeliveryMethodTax {
   id: number;
   title: string;
-  deliveryMethod: delivery;
+  deliveryMethod: EDeliveryMethod;
   deliveryTax: number;
   link: string;
 }

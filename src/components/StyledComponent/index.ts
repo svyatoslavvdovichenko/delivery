@@ -24,7 +24,7 @@ export const StyledButton = styled(Button)`
   }
 `;
 
-export const StyledErrorMassege = styled(ErrorMessage)`
+export const StyledErrorMessage = styled(ErrorMessage)`
   position: absolute;
   color: ${palette.error};
 `;

@@ -4,13 +4,11 @@ import {
   Checkbox,
   Col,
   Collapse,
-  Modal as AntdModal,
   Row,
   Tooltip,
 } from "antd";
 import { Formik, Form } from "formik";
 import { FC, useState } from "react";
-import styled from "styled-components";
 import {
   DeliveryMethod,
   initialValuesModal,
@@ -24,6 +22,9 @@ import DisplayPrice from "../DisplayPrice/DisplayPrice";
 import { SelectField } from "../SelectField/SelectField";
 import { StyledRow } from "../StyledComponent";
 import { InputField } from "../StyledComponent/inputField";
+import { StyledCollapse, StyledModal, StyledRowWrap } from "./styled";
+
+const { Panel } = Collapse;
 
 interface IModal {
   children?: React.ReactNode;
@@ -31,21 +32,6 @@ interface IModal {
   isOpenModal: boolean;
   setIsOpenModal: (state: boolean) => void;
 }
-
-const { Panel } = Collapse;
-
-const StyledModal = styled(AntdModal)`
-  border-radius: 15px;
-`;
-
-const StyledRowWrap = styled(Row)`
-  display: flex;
-  flex-direction: column;
-`;
-
-const StyledCollapse = styled(Collapse)`
-  margin-top: 15px;
-`;
 
 const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
   const [privateHouse, setPrivateHouse] = useState({
@@ -98,7 +84,7 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
         onSubmit={createNewDelivery}
         validationSchema={CreateDeliverySchema}
       >
-        {({ isValid, dirty, values }) => (
+        {({ values }) => (
           <Form>
             <InputField
               label="Имя доставки"
@@ -155,7 +141,7 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
                 </StyledRowWrap>
 
                 <Row gutter={16}>
-                  <Col span={!privateHouse.toPrivateHouse ? 8 : 12}>
+                  <Col span={privateHouse.toPrivateHouse ? 12 : 8}>
                     <InputField
                       suffix={
                         <Tooltip title="Введите номер дома">
@@ -181,7 +167,7 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
                     </Col>
                   )}
 
-                  <Col span={!privateHouse.toPrivateHouse ? 8 : 12}>
+                  <Col span={privateHouse.toPrivateHouse ? 12 : 8}>
                     <InputField
                       suffix={
                         <Tooltip title="Введите индекс состоящий из 6 цифр">
@@ -221,7 +207,7 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
                 </StyledRowWrap>
 
                 <Row gutter={16}>
-                  <Col span={!privateHouse.fromPrivateHouse ? 8 : 12}>
+                  <Col span={privateHouse.fromPrivateHouse ? 12 : 8}>
                     <InputField
                       suffix={
                         <Tooltip title="Введите номер дома">
@@ -247,7 +233,7 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
                     </Col>
                   )}
 
-                  <Col span={!privateHouse.fromPrivateHouse ? 8 : 12}>
+                  <Col span={privateHouse.fromPrivateHouse ? 12 : 8}>
                     <InputField
                       suffix={
                         <Tooltip title="Введите индекс состоящий из 6 цифр">
@@ -263,7 +249,7 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
             </StyledCollapse>
 
             <StyledRow>
-              <DisplayPrice values={values}/>
+              <DisplayPrice rate={values.rate} deliveryMethod={values.deliveryMethod} />
             </StyledRow>
 
             <StyledRow justify="space-between">
@@ -279,7 +265,7 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
                 Очистить
               </Button>
 
-              <Button disabled={!isValid && !dirty} type="primary" htmlType="submit">
+              <Button type="primary" htmlType="submit">
                 Создать
               </Button>
             </StyledRow>

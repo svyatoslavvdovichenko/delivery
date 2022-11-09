@@ -2,32 +2,10 @@ import { CheckOutlined } from "@ant-design/icons";
 import { Card, Col, PageHeader, Row, Typography } from "antd";
 import { FC, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import styled from "styled-components";
-import palette from "../../components/palette";
 import { IDelivery } from "../../types";
+import { HeaderText, StyledCard, StyledHeader, StyledTitle } from "./styled";
 
 const { Title, Text } = Typography;
-
-const StyledHeader = styled(PageHeader)`
-  background-color: ${palette.darkBlue};
-  margin-top: -5px;
-  border-radius: 15px;
-`;
-
-const StyledCard = styled(Card)`
-  width: 100%;
-  margin-top: 15px;
-  cursor: default;
-  background-color: ${palette.darkBlue};
-`;
-
-const HeaderText = styled(Text)`
-  cursor: pointer;
-`
-
-const StyledTitle = styled(Title)`
-  text-align: center;
-`;
 
 const DeliveryDetail: FC = () => {
   const [delivery, setDelivery] = useState<IDelivery | null>(null);
@@ -48,7 +26,13 @@ const DeliveryDetail: FC = () => {
     <>
       <StyledHeader
         onBack={() => navigate("/list")}
-        title={<HeaderText onClick={() => navigate("/list")}>{`Доставка № ${delivery?.id!}`}</HeaderText>}
+        title={
+          <HeaderText
+            onClick={() => navigate("/list")}
+          >
+            {`Доставка № ${delivery?.id!}`}
+          </HeaderText>
+        }
       />
       <Row>
         <StyledCard
@@ -159,11 +143,7 @@ const DeliveryDetail: FC = () => {
                 <Text>{delivery?.house}</Text>
               </Col>
 
-              {!delivery?.isHouse ? (
-                <Title level={5}>
-                  Частный дом <CheckOutlined />
-                </Title>
-              ) : (
+              {delivery?.isHouse ? (
                 <>
                   <Col span={12}>
                     <Title level={5}>Квартира:</Title>
@@ -173,12 +153,15 @@ const DeliveryDetail: FC = () => {
                     <Text>{delivery?.housing}</Text>
                   </Col>
                 </>
+              ) : (
+                <Title level={5}>
+                  Частный дом <CheckOutlined />
+                </Title>
               )}
             </Row>
           </StyledCard>
         </Col>
       </Row>
-      <></>
     </>
   );
 };

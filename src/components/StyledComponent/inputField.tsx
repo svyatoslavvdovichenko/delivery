@@ -3,7 +3,7 @@ import { Row } from "antd";
 import { Field, FieldProps } from "formik";
 import { FC, ReactNode } from "react";
 import {
-  StyledErrorMassege,
+  StyledErrorMessage,
   StyledInput,
   StyledInputPassword,
   StyledContainer,
@@ -61,6 +61,6 @@ export const InputField: FC<IInputProps> = ({
         </>
       )}
     </Field>
-    <StyledErrorMassege name={name} component="div" />
+    <StyledErrorMessage name={name} component="div" />
   </StyledContainer>
 );

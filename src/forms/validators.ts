@@ -20,8 +20,7 @@ export const SingUpSchema = Yup.object().shape({
   password: Yup.string()
     .required("Это обязательное поле")
     .min(6, "Слишком короткий пароль")
-    .matches(/(?=.*[0-9])/, "Пароль должен содержать цифры")
-    .matches(/(?=.*[A-Z])/, "Пароль должен содержать заглавные буквы"),
+    .matches(/(?=.*[0-9])/, "Пароль должен содержать цифры"),
   doublePassword: Yup.string()
     .required("Это обязательное поле")
     .oneOf([Yup.ref("password"), null], "Пароли должны совпадать"),

@@ -1,40 +1,16 @@
 import { Typography } from "antd";
-import { FC, useEffect } from "react";
-import { DeliveryMethod, priceDelivery, TypeDelivery } from "../../constants";
-import { IDelivery } from "../../types";
+import { FC } from "react";
+import { getCurrentPrice } from "../../helpers/getCurrentPrice";
 
 interface IDisplayPrice {
-  values: IDelivery;
+  rate: string;
+  deliveryMethod: string;
 }
 
-const DisplayPrice: FC<IDisplayPrice> = ({ values }) => {
-  const getCurrentPrice = () => {
-    let price = priceDelivery;
-
-    if (values.deliveryMethod && !values.rate) {
-      price *=
-        DeliveryMethod[Number(values.deliveryMethod) - 1].deliveryTax || 1;
-    }
-
-    if (values.rate && !values.deliveryMethod) {
-      price *= TypeDelivery[Number(values.rate) - 1].factor || 1;
-    }
-
-    if (values.deliveryMethod && values.rate) {
-      price *=
-        DeliveryMethod[Number(values.deliveryMethod) - 1].deliveryTax || 1;
-      price *= TypeDelivery[Number(values.rate) - 1].factor || 1;
-      return price;
-    }
-
-    return price
-  };
-
-  return (
-    <Typography.Text>
-      {`Текущая стоимость доставки: ${getCurrentPrice()} ₽`}{" "}
-    </Typography.Text>
-  );
-};
+const DisplayPrice: FC<IDisplayPrice> = ({ rate, deliveryMethod }) => (
+  <Typography.Text>
+    {`Текущая стоимость доставки: ${getCurrentPrice(rate, deliveryMethod)} ₽`}{" "}
+  </Typography.Text>
+);
 
 export default DisplayPrice;

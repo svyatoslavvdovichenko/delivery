@@ -1,75 +1,21 @@
 import { FC } from "react";
-import {
-  Button,
-  Dropdown,
-  Layout as AntdLayout,
-  Menu,
-  Row,
-  Typography,
-} from "antd";
+import { Typography } from "antd";
 import { UserOutlined } from "@ant-design/icons";
-import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
-import palette from "./palette";
-import { StyledButton } from "./StyledComponent";
-import Alert from "./Alert/Alert";
-import { useActions, useError, useUser } from "../hooks";
+import palette from "../palette";
+import { StyledButton } from "../StyledComponent";
+import Alert from "../Alert/Alert";
+import { useActions, useError, useUser } from "../../hooks";
+import { CenterRow, StyledContent, StyledDropdown, StyledFooter, StyledHeader, StyledItem, StyledLayout, StyledMenu } from "./styled";
 
 const { Title } = Typography;
 
-const { Header, Footer, Content } = AntdLayout;
-
-const { Item } = Menu;
-
-const StyledContent = styled(Content)<{ $shouldBeCentered: boolean }>`
-  padding: 20px;
-
-  ${(props) =>
-    props.$shouldBeCentered &&
-    css`
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: "#FAFAFA";
-    `}
-`;
-
-const StyledDropdown = styled(Dropdown)`
-  border-radius: 15px;
-`;
-
-const StyledItem = styled(Item)`
-  border-radius: 10px;
-`;
-const StyledMenu = styled(Menu)`
-  border-radius: 10px;
-`;
-
-const StyledHeader = styled(Header)`
-  background-color: ${palette.darkBlue};
-`;
-
-const StyledFooter = styled(Footer)`
-  background-color: ${palette.darkBlue};
-  color: ${palette.light};
-`;
-
-export type ILayout = {
+export type TLayout = {
   shouldBeCentered?: boolean;
   children: React.ReactNode;
 };
 
-const StyledLayout = styled(AntdLayout)`
-  background-color: ${palette.dark};
-`;
-
-const CenterRow = styled(Row)`
-  margin-top: 15px;
-  display: flex;
-  align-items: center;
-`;
-
-export const Layout: FC<ILayout> = ({ children, shouldBeCentered = false }) => {
+export const Layout: FC<TLayout> = ({ children, shouldBeCentered = false }) => {
   const { isOpenError } = useError();
   const { isAuth, user } = useUser();
   const { onLogOut } = useActions();

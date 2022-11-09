@@ -1,37 +1,11 @@
-import { Row, Typography, Col } from "antd";
+import { Row, Col } from "antd";
 import { Formik, Form } from "formik";
 import { SingUpSchema } from "../../forms/validators";
-import styled, { css } from "styled-components";
-import palette from "../palette";
-import { InputField } from "../StyledComponent/inputField";
 import { StyledButtonOut } from "../StyledComponent";
 import { useActions } from "../../hooks";
 import { signUpValidate } from "../../helpers/signUpValidate";
+import { StyledForm, StyledInputField, StyledText } from "./styled";
 
-const { Text } = Typography;
-
-const StyledForm = styled(Form)`
-  background-color: ${palette.sand};
-  padding: 25px;
-  padding-bottom: 50px;
-  border-radius: 10px;
-  min-height: 30vh;
-  min-width: 50vw;
-
-  @media (max-width: 750px) {
-    min-width: 90vw;
-  }
-`;
-
-const StyledInputField = styled(InputField)`
-  margin-top: 15px;
-`
-
-const StyledText = styled(Text)`
-  color: ${palette.light};
-  font-size: 25px;
-  font-align: center;
-`;
 
 const SignUp = () => {
   const { setError, onSignUp } = useActions();

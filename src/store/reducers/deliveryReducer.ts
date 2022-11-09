@@ -1,4 +1,3 @@
-import { DeliveryMethod } from "../../constants";
 import { createRandomValue } from "./../../helpers/randomId";
 import { IDelivery } from "./../../types";
 import {
