@@ -42,7 +42,7 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
   const { createDelivery } = useActions();
   const { user } = useUser();
 
-  const setPrivateHouseFrom = () => {
+  const setPrivateHouseFrom = () => {    
     setPrivateHouse({
       ...privateHouse,
       fromPrivateHouse: !privateHouse.fromPrivateHouse,
@@ -116,74 +116,6 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
               <StyledPanel header="Откуда доставка" key="1">
                 <InputField
                   label="Страна"
-                  name="country"
-                  placeholder="Введите страну"
-                />
-
-                <InputField
-                  label="Город"
-                  name="city"
-                  placeholder="Введите город"
-                />
-
-                <InputField
-                  label="Улица"
-                  name="street"
-                  placeholder="Введите название улицы"
-                />
-
-                <StyledRowWrap>
-                  <Row style={{ marginBottom: 10 }}>Частный дом</Row>
-
-                  <Row>
-                    <Checkbox name="isHouse" onChange={setPrivateHouseTo} />
-                  </Row>
-                </StyledRowWrap>
-
-                <Row gutter={16}>
-                  <Col span={privateHouse.toPrivateHouse ? 12 : 8}>
-                    <InputField
-                      suffix={
-                        <Tooltip title="Введите номер дома">
-                          <InfoCircleOutlined />
-                        </Tooltip>
-                      }
-                      label="Дом"
-                      name="house"
-                    />
-                  </Col>
-
-                  {!privateHouse.toPrivateHouse && (
-                    <Col span={8}>
-                      <InputField
-                        suffix={
-                          <Tooltip title="Введите квартиру">
-                            <InfoCircleOutlined />
-                          </Tooltip>
-                        }
-                        label="Квартира"
-                        name="housing"
-                      />
-                    </Col>
-                  )}
-
-                  <Col span={privateHouse.toPrivateHouse ? 12 : 8}>
-                    <InputField
-                      suffix={
-                        <Tooltip title="Введите индекс состоящий из 6 цифр">
-                          <InfoCircleOutlined />
-                        </Tooltip>
-                      }
-                      label="Индекс"
-                      name="index"
-                    />
-                  </Col>
-                </Row>
-              </StyledPanel>
-
-              <StyledPanel header="Куда" key="2">
-                <InputField
-                  label="Страна"
                   name="fromCountry"
                   placeholder="Введите страну"
                 />
@@ -203,7 +135,9 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
                 <StyledRowWrap>
                   <Row style={{ marginBottom: 10 }}>Частный дом</Row>
 
-                  <Checkbox name="fromIsHouse" onChange={setPrivateHouseFrom} />
+                  <Row>
+                    <Checkbox name="fromIsHouse" onChange={setPrivateHouseFrom} />
+                  </Row>
                 </StyledRowWrap>
 
                 <Row gutter={16}>
@@ -242,6 +176,72 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
                       }
                       label="Индекс"
                       name="fromIndex"
+                    />
+                  </Col>
+                </Row>
+              </StyledPanel>
+
+              <StyledPanel header="Куда" key="2">
+                <InputField
+                  label="Страна"
+                  name="country"
+                  placeholder="Введите страну"
+                />
+
+                <InputField
+                  label="Город"
+                  name="city"
+                  placeholder="Введите город"
+                />
+
+                <InputField
+                  label="Улица"
+                  name="street"
+                  placeholder="Введите название улицы"
+                />
+
+                <StyledRowWrap>
+                  <Row style={{ marginBottom: 10 }}>Частный дом</Row>
+
+                  <Checkbox name="isHouse" onChange={setPrivateHouseTo} />
+                </StyledRowWrap>
+
+                <Row gutter={16}>
+                  <Col span={privateHouse.toPrivateHouse ? 12 : 8}>
+                    <InputField
+                      suffix={
+                        <Tooltip title="Введите номер дома">
+                          <InfoCircleOutlined />
+                        </Tooltip>
+                      }
+                      label="Дом"
+                      name="house"
+                    />
+                  </Col>
+
+                  {!privateHouse.toPrivateHouse && (
+                    <Col span={8}>
+                      <InputField
+                        suffix={
+                          <Tooltip title="Введите квартиру">
+                            <InfoCircleOutlined />
+                          </Tooltip>
+                        }
+                        label="Квартира"
+                        name="housing"
+                      />
+                    </Col>
+                  )}
+
+                  <Col span={privateHouse.toPrivateHouse ? 12 : 8}>
+                    <InputField
+                      suffix={
+                        <Tooltip title="Введите индекс состоящий из 6 цифр">
+                          <InfoCircleOutlined />
+                        </Tooltip>
+                      }
+                      label="Индекс"
+                      name="index"
                     />
                   </Col>
                 </Row>
