@@ -1,6 +1,8 @@
-export const createRandomValue = (array: any): number => {
+import { IDelivery, IUser } from './../types';
+
+export const createRandomValue = (array: IDelivery[] | IUser[]): number => {
   let randomId: number = Math.floor(Math.random() * 10000);
-  array.forEach((el: { id: number }) => {
+  array.forEach((el) => {
     if (randomId === el.id) {
       createRandomValue(array);
       return;

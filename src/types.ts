@@ -47,3 +47,10 @@ export interface IDeliveryMethodTax {
   deliveryTax: number;
   link: string;
 }
+
+export interface IUserCandidate {
+  password: string, 
+  email: string, 
+  firstName: string, 
+  lastName: string
+}

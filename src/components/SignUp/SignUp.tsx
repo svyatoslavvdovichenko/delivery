@@ -5,12 +5,13 @@ import { StyledButtonOut } from "../StyledComponent";
 import { useActions } from "../../hooks";
 import { signUpValidate } from "../../helpers/signUpValidate";
 import { StyledForm, StyledInputField, StyledText } from "./styled";
+import { IUserCandidate } from "../../types";
 
 
 const SignUp = () => {
   const { setError, onSignUp } = useActions();
 
-  const registration = (value: any) => {
+  const registration = (value: IUserCandidate) => {
     
     const { password, email, firstName, lastName } = value;
     const error = signUpValidate({ password, email, firstName, lastName });
