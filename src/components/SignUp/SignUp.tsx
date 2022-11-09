@@ -11,6 +11,7 @@ const SignUp = () => {
   const { setError, onSignUp } = useActions();
 
   const registration = (value: any) => {
+    
     const { password, email, firstName, lastName } = value;
     const error = signUpValidate({ password, email, firstName, lastName });
 
@@ -34,7 +35,7 @@ const SignUp = () => {
       onSubmit={registration}
       validationSchema={SingUpSchema}
     >
-      {({ isValid }) => (
+      {({ isValid, handleSubmit }) => (
         <StyledForm>
           <StyledText>Регистрация</StyledText>
           <Row>
@@ -57,9 +58,7 @@ const SignUp = () => {
             isPassword
           />
 
-          <Row justify="space-between" align="middle"></Row>
-
-          <StyledButtonOut block htmlType="submit">
+          <StyledButtonOut onClick={() => handleSubmit()} block htmlType="submit">
             Зарегистрироваться
           </StyledButtonOut>
         </StyledForm>

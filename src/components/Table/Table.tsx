@@ -1,7 +1,7 @@
 import { Table as AntdTable, Typography } from "antd";
 import { useDeliveries } from "../../hooks";
 import { columns } from "../../constants";
-import { StyledButton } from "../StyledComponent";
+import { StyledButton } from "./styled";
 
 const { Title } = Typography;
 

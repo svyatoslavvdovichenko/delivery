@@ -22,7 +22,7 @@ import DisplayPrice from "../DisplayPrice/DisplayPrice";
 import { SelectField } from "../SelectField/SelectField";
 import { StyledRow } from "../StyledComponent";
 import { InputField } from "../StyledComponent/inputField";
-import { StyledCollapse, StyledModal, StyledRowWrap, StyledText } from "./styled";
+import { StyledCollapse, StyledModal, StyledPanel, StyledRowWrap, StyledText } from "./styled";
 
 const { Panel } = Collapse;
 
@@ -113,7 +113,7 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
               </Col>
             </Row>
             <StyledCollapse accordion>
-              <Panel header="Откуда доставка" key="1">
+              <StyledPanel header="Откуда доставка" key="1">
                 <InputField
                   label="Страна"
                   name="country"
@@ -179,9 +179,9 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
                     />
                   </Col>
                 </Row>
-              </Panel>
+              </StyledPanel>
 
-              <Panel header="Куда" key="2">
+              <StyledPanel header="Куда" key="2">
                 <InputField
                   label="Страна"
                   name="fromCountry"
@@ -245,7 +245,7 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
                     />
                   </Col>
                 </Row>
-              </Panel>
+              </StyledPanel>
             </StyledCollapse>
 
             <StyledRow>
