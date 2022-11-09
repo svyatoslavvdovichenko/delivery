@@ -22,7 +22,7 @@ import DisplayPrice from "../DisplayPrice/DisplayPrice";
 import { SelectField } from "../SelectField/SelectField";
 import { StyledRow } from "../StyledComponent";
 import { InputField } from "../StyledComponent/inputField";
-import { StyledCollapse, StyledModal, StyledRowWrap } from "./styled";
+import { StyledCollapse, StyledModal, StyledRowWrap, StyledText } from "./styled";
 
 const { Panel } = Collapse;
 
@@ -266,7 +266,7 @@ const Modal: FC<IModal> = ({ isOpenModal, setIsOpenModal }) => {
               </Button>
 
               <Button type="primary" htmlType="submit">
-                Создать
+                <StyledText>Создать</StyledText>
               </Button>
             </StyledRow>
           </Form>

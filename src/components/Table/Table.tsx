@@ -1,7 +1,6 @@
 import { Table as AntdTable, Typography } from "antd";
-import React from "react";
-import { columns } from "../../constants";
 import { useDeliveries } from "../../hooks";
+import { columns } from "../../constants";
 import { StyledButton } from "../StyledComponent";
 
 const { Title } = Typography;
@@ -21,7 +20,7 @@ const Table: React.FC<ITable> = ({ setIsOpenModal }) => {
 
       <AntdTable
         footer={() => (
-          <StyledButton type="primary" onClick={() => setIsOpenModal(true)}>
+          <StyledButton onClick={() => setIsOpenModal(true)}>
             Добавить доставку
           </StyledButton>
         )}
