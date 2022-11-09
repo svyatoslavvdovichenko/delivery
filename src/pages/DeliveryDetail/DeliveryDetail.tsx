@@ -86,6 +86,14 @@ const DeliveryDetail: FC = () => {
               </Col>
 
               <Col span={12}>
+                <Title level={5}>Улица:</Title>
+              </Col>
+
+              <Col span={12}>
+                <Text>{delivery?.fromStreet}</Text>
+              </Col>
+
+              <Col span={12}>
                 <Title level={5}>Дом:</Title>
               </Col>
 
@@ -133,6 +141,14 @@ const DeliveryDetail: FC = () => {
 
               <Col span={12}>
                 <Text>{delivery?.city}</Text>
+              </Col>
+
+              <Col span={12}>
+                <Title level={5}>Улица:</Title>
+              </Col>
+
+              <Col span={12}>
+                <Text>{delivery?.street}</Text>
               </Col>
 
               <Col span={12}>
