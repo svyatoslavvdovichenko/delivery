@@ -17,11 +17,15 @@ const StyledForm = styled(Form)`
   padding-bottom: 50px;
   border-radius: 10px;
   min-height: 30vh;
-  min-width: 50vw;
+  width: 50vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
+  @media (min-width: 1024px) {
+    width: 500px;
+  }
 
   @media (max-width: 750px) {
     min-width: 90vw;
@@ -39,14 +43,14 @@ const SignIn = () => {
 
   const onUserLogin = (values: IUser) => {
     const error = signInValidate(values);
-    
+
     if (error) {
       setError(error);
       return;
-    }    
-    
+    }
+
     onLogIn(values);
-  }
+  };
 
   return (
     <Formik
@@ -63,15 +67,11 @@ const SignIn = () => {
 
           <InputField name="email" placeholder="Email" />
 
-          <InputField
-            name="password"
-            placeholder="Пароль"
-            isPassword
-          />
+          <InputField name="password" placeholder="Пароль" isPassword />
 
           <Row justify="space-between" align="middle"></Row>
 
-          <StyledButtonIn block htmlType="submit" disabled={!isValid}>
+          <StyledButtonIn block htmlType="submit">
             Вход
           </StyledButtonIn>
         </StyledForm>

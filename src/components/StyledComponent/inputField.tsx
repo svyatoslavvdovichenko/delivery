@@ -3,7 +3,7 @@ import { Row } from "antd";
 import { Field, FieldProps } from "formik";
 import { FC, ReactNode } from "react";
 import {
-  StyledErrorMassege,
+  StyledErrorMessage,
   StyledInput,
   StyledInputPassword,
   StyledContainer,
@@ -15,6 +15,7 @@ interface IInputProps {
   isPassword?: boolean;
   label?: ReactNode;
   type?: string;
+  suffix?: ReactNode;
 }
 
 export const InputField: FC<IInputProps> = ({
@@ -22,7 +23,8 @@ export const InputField: FC<IInputProps> = ({
   placeholder,
   isPassword,
   label,
-  type
+  type,
+  suffix,
 }) => (
   <StyledContainer>
     <Field name={name}>
@@ -35,7 +37,6 @@ export const InputField: FC<IInputProps> = ({
               placeholder={placeholder}
               $validationError={error}
               $isTouched={touched}
-              style={{marginBottom: "20px"}}
               status={error ? "error" : ""}
               {...field}
               iconRender={(visible) =>
@@ -48,18 +49,18 @@ export const InputField: FC<IInputProps> = ({
             />
           ) : (
             <StyledInput
-              style={{marginBottom: "20px"}}
               placeholder={placeholder}
               border={type}
               $validationError={error}
               status={error ? "error" : ""}
               $isTouched={touched}
+              suffix={suffix}
               {...field}
             />
           )}
         </>
       )}
     </Field>
-    <StyledErrorMassege name={name} component="div" />
+    <StyledErrorMessage name={name} component="div" />
   </StyledContainer>
 );

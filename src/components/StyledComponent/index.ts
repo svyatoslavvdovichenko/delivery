@@ -1,4 +1,4 @@
-import { Button, Input } from "antd";
+import { Button, Input, Row } from "antd";
 import { ErrorMessage } from "formik";
 import palette from "../palette";
 import styled, { css } from "styled-components";
@@ -10,7 +10,6 @@ interface IInputProps {
 }
 
 export const StyledButton = styled(Button)`
-  background-color: ${palette.light};
   border: 0;
 
   &:hover {
@@ -25,11 +24,14 @@ export const StyledButton = styled(Button)`
   }
 `;
 
-export const StyledErrorMassege = styled(ErrorMessage)`
-  margin-top: -20px;
+export const StyledErrorMessage = styled(ErrorMessage)`
   position: absolute;
-  color: red;
+  color: ${palette.error};
 `;
+
+export const StyledRow = styled(Row)`
+  margin-top: 15px;
+`
 
 export const StyledInput = styled(Input)<IInputProps>`
   border-radius: 20px;
@@ -46,7 +48,7 @@ export const StyledInput = styled(Input)<IInputProps>`
     $validationError &&
     $isTouched &&
     css`
-      border-color: red;
+      border-color: ${palette.error};
       box-shadow: none;
     `};
 `;
@@ -58,17 +60,19 @@ export const StyledInputPassword = styled(Input.Password)<IInputProps>`
     $validationError &&
     $isTouched &&
     css`
-      border-color: red;
+      border-color: ${palette.error};
       box-shadow: none;
     `};
 `;
 
 export const StyledContainer = styled.div`
   width: 100%;
+  margin-bottom: 25px;
 `;
 
 export const StyledButtonIn = styled(Button)`
   border-radius: 20px;
+  margin-top: 20px;
 
   &:hover {
     background-color: ${palette.darkBlue};
@@ -84,6 +88,7 @@ export const StyledButtonIn = styled(Button)`
 
 export const StyledButtonOut = styled(Button)`
   border-radius: 20px;
+  margin-top: 25px;
 
   &:hover {
     background-color: ${palette.alpha};

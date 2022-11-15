@@ -1,4 +1,4 @@
-import { ErrorState, ErrorActionTypes, ErrorAction } from "./../type/error";
+import { ErrorState, ErrorActionTypes, ErrorAction } from "./../types/error";
 
 const initialState: ErrorState = {
   message: null,

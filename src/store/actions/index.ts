@@ -1,10 +1,14 @@
-import { setError, closeError } from './errorActions';
-import { onLogIn, onLogOut, onSignUp } from './userActions';
+import { createDelivery, getDeliveries } from "./deliveryActions";
+import { setError, closeError } from "./errorActions";
+import { onLogIn, onLogOut, onSignUp, setUser } from "./userActions";
 
 export default {
   setError,
   closeError,
   onLogIn,
   onLogOut,
-  onSignUp
-}
+  onSignUp,
+  setUser,
+  getDeliveries,
+  createDelivery,
+};

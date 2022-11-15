@@ -1,13 +1,13 @@
-import { IUser } from "../types";
+import { IDelivery, IUser } from './../types';
 
-export const createRandomValue = (users: IUser[]): number => {
+export const createRandomValue = (array: IDelivery[] | IUser[]): number => {
   let randomId: number = Math.floor(Math.random() * 10000);
-  users.forEach((user) => {
-    if (randomId === user.id) {
-      createRandomValue(users);
+  array.forEach((el) => {
+    if (randomId === el.id) {
+      createRandomValue(array);
       return;
     }
-  })
-  
+  });
+
   return randomId;
-}
+};

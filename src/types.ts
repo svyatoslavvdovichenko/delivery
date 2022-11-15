@@ -6,45 +6,51 @@ export interface IUser {
   lastName?: string;
 }
 
-export enum DeliveryMethodEmum {
+export enum EDeliveryMethod {
   SDEK = "СДЕК",
   POST_OF_RUSSIA = "Почта россии",
   DHL = "DHL",
 }
 
-export type delivery = DeliveryMethodEmum;
-
 export interface IDelivery {
-  userId: number,
-  id: number,
+  userId?: number;
+  id?: number;
   title: string;
-  deliveryMethod: deliveryMethodTax;
-  toAdress: IAdress;
-  fromAdress: IAdress;
-  rate: number;
-  price: number;
+  deliveryMethod: string;
+  country: string;
+  city: string;
+  street: string;
+  house: string;
+  housing: string;
+  index: string;
+  isHouse?: boolean;
+  fromCountry: string;
+  fromCity: string;
+  fromStreet: string;
+  fromHouse: string;
+  fromIsHouse?: boolean;
+  fromHousing: string;
+  fromIndex: string;
+  rate: string;
+  price?: number;
 }
 
-export enum rateEmum {
+export enum ERate {
   DEFAULT = "DEFAULT",
   PREMIUM = "PREMIUM",
 }
 
-export type rate = rateEmum;
-
-export interface deliveryMethodTax {
+export interface IDeliveryMethodTax {
   id: number;
   title: string;
-  deliveryMethod: delivery;
+  deliveryMethod: EDeliveryMethod;
   deliveryTax: number;
   link: string;
 }
 
-export interface IAdress {
-  country: string;
-  city: string;
-  street: string;
-  house: number;
-  housing: string;
-  index: number;
+export interface IUserCandidate {
+  password: string, 
+  email: string, 
+  firstName: string, 
+  lastName: string
 }
